@@ -14,9 +14,16 @@ class App extends Component {
       movieInput: ''
     }
   }
-
+  //componentDidMount is one of the functions that gets called in the components lifecycle. Its a good place to handle any asynchronous code or axios requests.
+  //A full list of lifecycle methods are here if you're interested https://reactjs.org/docs/react-component.html#componentdidmount
   componentDidMount() {
+    //.get is used to grab data. In CRUD it corresponds with Read
+    //Create - axios.post 
+    //Read - axios.get 
+    //Update - axios.put
+    //Delete - axios.delete
     axios.get('http://localhost:3005/api/movies').then( response => {
+      //When making asynchronous calls to other servers, we need to use .then to catch the response from the external server.
       this.setState({
         movies: response.data
       })
@@ -31,6 +38,7 @@ class App extends Component {
 
   addMovie = () => {
     let {movieInput} = this.state 
+    //Since we need to create a movie here, we use post. We also need to pass some data that can be used for a new movie so we pass an object as the second argument with the movieInput from state
     axios.post('http://localhost:3005/api/movies', {movieInput}).then(response => {
       this.setState({
         movies: response.data,
