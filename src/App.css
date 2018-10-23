@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
@@ -20,6 +23,21 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.car-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border: 1px solid black;
+  width: 80%;
+  height: 200px;
+  margin: 20px;
+}
+
+.car-div {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes App-logo-spin {
