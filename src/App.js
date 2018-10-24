@@ -59,8 +59,8 @@ class App extends Component {
     })
   }
 
-  submitEdit = (newValue, id) => {
-    axios.put(`http://localhost:3005/api/movies/${id}`, {newValue})
+  submitEdit = (newValueTitle, id) => {
+    axios.put(`http://localhost:3005/api/movies/${id}`, {newValueTitle})
     .then( response => {
       this.setState({
         movies: response.data
