@@ -22,12 +22,14 @@ class App extends Component {
     //Read - axios.get 
     //Update - axios.put
     //Delete - axios.delete
-    axios.get('http://localhost:3005/api/movies').then( response => {
+    axios.get('http://localhost:3005/api/movies')
+    .then(response => {
       //When making asynchronous calls to other servers, we need to use .then to catch the response from the external server.
       this.setState({
         movies: response.data
       })
     }).catch(err => console.log('err', err))
+    // .catch(() => toast.error("didn't work"));
   }
 
   handleMovieChange = (value) => {
@@ -39,7 +41,8 @@ class App extends Component {
   addMovie = () => {
     let {movieInput} = this.state 
     //Since we need to create a movie here, we use post. We also need to pass some data that can be used for a new movie so we pass an object as the second argument with the movieInput from state
-    axios.post('http://localhost:3005/api/movies', {movieInput}).then(response => {
+    axios.post('http://localhost:3005/api/movies', {movieInput})
+    .then(response => {
       this.setState({
         movies: response.data,
         movieInput: ''
@@ -48,7 +51,8 @@ class App extends Component {
   }
 
   deleteMovie = (id) => {
-    axios.delete(`http://localhost:3005/api/movies/${id}`).then( response => {
+    axios.delete(`http://localhost:3005/api/movies/${id}`)
+    .then(response => {
       this.setState({
         movies: response.data
       })
@@ -56,7 +60,8 @@ class App extends Component {
   }
 
   submitEdit = (newValue, id) => {
-    axios.put(`http://localhost:3005/api/movies/${id}`, {newValue}).then( response => {
+    axios.put(`http://localhost:3005/api/movies/${id}`, {newValue})
+    .then( response => {
       this.setState({
         movies: response.data
       })
@@ -80,7 +85,8 @@ class App extends Component {
             )
           })
         }
-        <input value={movieInput} onChange={(e) => this.handleMovieChange(e.target.value)}/><button onClick={this.addMovie}>Add Movie</button>
+        <input value={movieInput} onChange={(e) => this.handleMovieChange(e.target.value)}/>
+        <button onClick={this.addMovie}>Add Movie</button>
       </div>
     );
   }
